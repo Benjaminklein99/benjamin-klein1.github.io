@@ -14,8 +14,8 @@
  */
 function length(string) {
     // YOUR CODE BELOW HERE //
-    
-
+    // return the length of the input string
+    return string.length;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -25,8 +25,8 @@ function length(string) {
  */
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
-
-
+    // return string in lower case using the toLowerCase method
+    return string.toLowerCase();
 
     // YOUR CODE ABOVE HERE //
 }
@@ -36,7 +36,8 @@ function toLowerCase(string) {
  */
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
-
+    // return string in upper case using the toUpperCase method
+    return string.toUpperCase();
 
 
     // YOUR CODE ABOVE HERE //
@@ -57,7 +58,18 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-
+    // creating a storage array
+    let stor = [];
+    // split the input string at the spaces into an array
+    let arr = string.split(' ');
+    // loop over the split array and add each string in lower case to the storage array
+    for (let i = 0; i < arr.length; i++){
+        stor.push(arr[i].toLowerCase())
+    }
+    // join the storage array with dashes
+    let res = stor.join('-')
+    // return the result
+    return res;
 
 
     // YOUR CODE ABOVE HERE //
@@ -77,9 +89,15 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
-    
-
+    // if the string starts with the input character
+    if (string[0].toUpperCase() === char.toUpperCase()){
+        //return true
+        return true;
+    // else
+    } else {
+        // return false
+        return false;
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -97,7 +115,15 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+    // if the last letter in the entered string is the same as the entered character
+    if (string[string.length - 1].toUpperCase() === char.toUpperCase()){
+        // return true
+        return true;
+    // else 
+    } else {
+        // return false
+        return false;
+    }
 
 
     // YOUR CODE ABOVE HERE //
