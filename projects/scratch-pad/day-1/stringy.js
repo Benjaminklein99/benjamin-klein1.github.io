@@ -136,6 +136,8 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    // return the input string concatonated
+    return stringOne + stringTwo;
 
 
 
@@ -155,7 +157,15 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
+    // creating a storage variable containing an empty string
+    let stor = '';
+    // looping over the args array
+    for (let i = 0; i < args.length; i++){
+        // concatonate each input with the storage variable
+        stor += args[i];
+    }
+    // return storage variable
+    return stor;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -171,8 +181,15 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
-
+    // if first input is longer than second
+    if (stringOne.length > stringTwo.length){
+        // return the first input
+        return stringOne;
+    // otherwise
+    } else {
+        // return second input
+        return stringTwo;
+    }
 
     // YOUR CODE ABOVE HERE //
 }
@@ -186,6 +203,13 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    if (stringOne < stringTwo){
+        return 1;
+    } else if (stringOne > stringTwo){
+        return -1;
+    } else {
+        return 0;
+    }
 
 
 
@@ -202,6 +226,14 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    if (stringOne < stringTwo){
+        return -1;
+    } else if (stringOne > stringTwo){
+        return 1;
+    } else {
+        return 0;
+    }
+
 
 
 
