@@ -14,7 +14,15 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+    // if value is an array
+    if (Array.isArray(value)){
+        // return true
+        return true;
+    // otherwise
+    } else {
+        // false
+        return false;
+    }
     
     
     
@@ -31,7 +39,15 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
+    // if type of value is object     not an array              not null             and not a date
+    if (typeof value === 'object' && !Array.isArray(value) && value !== null && value instanceof(Date) === false){
+        // return true
+        return true;
+    // otherwise
+    } else {
+        // return false
+        return false;
+    }
     
     
     
@@ -46,7 +62,15 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
+    // if value is an object        not null                and not a date
+    if (typeof value === 'object' && value !== null && value instanceof(Date) !== true){
+        // return true
+        return true;
+    // otherwise
+    } else {
+        // return false
+        return false;
+    }
     
     
     
@@ -74,7 +98,43 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    
+    // if value is a string
+    if (typeof value === 'string'){
+        // return string
+        return 'string';
+    // if value is an array
+    } else if (Array.isArray(value)){
+        // return array
+        return 'array';
+    // if value is a date
+    } else if (value instanceof(Date)){
+        // return date
+        return 'date';
+    // if value     is an object             is not an array       and is not null
+    } else if (typeof value === 'object' && !Array.isArray(value) && value !== null){
+        // return object
+        return 'object';
+    // if value is undefined
+    } else if (value === undefined){
+        // return undefined
+        return 'undefined';
+    // if value is a number
+    } else if (typeof value === 'number'){
+        // return number
+        return 'number';
+    // if value is a boolean
+    } else if (typeof value === 'boolean'){
+        // return boolena
+        return 'boolean';
+    // if value is null
+    } else if (value === null){
+        // return null
+        return 'null';
+    // if value is a function
+    } else if (typeof value === 'function'){
+        // return function
+        return 'function';
+    } 
     
     
     
