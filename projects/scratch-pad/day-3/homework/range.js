@@ -23,7 +23,25 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
+    // create a storage array
+    let arr = [];
+    // if the start input is less than the end input
+    if (start < end){
+        // loop forward between the inputs
+        for (let i = start; i <= end; i++){
+            // push the index to the storage array
+            arr.push(i);
+        }
+    // otherwids the start input is greater than the end input
+    } else {
+        // loop backward between the inputs
+        for (let i = start; i >= end; i--){
+            // push the index to the storage array
+            arr.push(i);
+        }
+    }
+    // return the storage array
+    return arr;
     
     
     
