@@ -82,8 +82,15 @@ console.log(animals);
 var friends = [];
 
 function getRandom(arr){
-
+  let x = Math.random() * (arr.length);
+   return Math.floor(x);
 }
+
+friends.push(animals[getRandom(animals)].name);
+console.log(friends);
+animals[0]['friends'] = friends;
+console.log(animals[0]);
+
 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
