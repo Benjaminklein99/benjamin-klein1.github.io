@@ -18,8 +18,21 @@ function fizzBuzz() {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
-
+function drawChessboard(num) {
+  let board = [];
+  for (let i = 0; i < num; i++){
+    let row = '';
+    for (let j = 0; j < num; j++){
+      if ((i + j) % 2 === 0){
+        row += ' ';
+      } else {
+        row += '#';
+      }
+    }
+    board.push(row);
+  }
+  let res = board.join('\n') + '\n';
+  console.log(res);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
