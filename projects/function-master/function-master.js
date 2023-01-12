@@ -114,7 +114,13 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-    
+    let arr = string.split(' ');
+    for (let i = 0; i < arr.length; i++){
+        if (arr[i] === word){
+            return true;
+        }
+    }
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -122,6 +128,8 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
+    object.friends.push(name);
+    return object;
 
 }
 
@@ -129,7 +137,16 @@ function addFriend (name, object) {
 // Function 12 - Is Friend ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function isFriend(name, object) {
+function isFriend(name, obj) {
+    if (obj.friends === undefined){
+        return false;
+    }
+    for (let i = 0; i < obj.friends.length; i++){
+        if (name === obj.friends[i]){
+            return true;
+        }
+    }
+    return false;
 
 }
 
@@ -138,7 +155,22 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+    let stor = [];
+    let stor2;
+    let stor3 = [];
+    for (let i = 0; i < array.length; i++){
+        if (array[i].name !== name){
+            stor.push(array[i].name);
+        } else {
+            stor2 = array[i].friends;
+        }
+    }
+    for (let i = 0; i < stor.length; i++){
+        if (!stor2.includes(stor[i])){
+            stor3.push(stor[i]);
+        }
+    }
+    return stor3;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -146,6 +178,8 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
+    object[key] = value;
+    return object;
 
 }
 
@@ -154,7 +188,13 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+    for (let i = 0; i < array.length; i++){
+        for (let key in object){
+            if (array[i] === key){
+                delete object[key];
+            }
+        }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -162,7 +202,7 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+    return [...new Set(array)];
 }
 
 //////////////////////////////////////////////////////////////////////
