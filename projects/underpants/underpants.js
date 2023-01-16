@@ -21,6 +21,10 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
+_.identity =function(value){
+    return value;
+}
+
 
 /** _.typeOf
 * Arguments:
@@ -129,6 +133,25 @@ var _ = {};
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
+
+_.each = function(collection, func){
+    // if input collection is an array
+    if (Array.isArray(collection)){
+        // iterate over array
+        for (let i = 0; i < collection.length; i++){
+            // pass current item index and array itself to input function
+            func(collection[i], i, collection);
+        }
+    // otherwise its an object
+    } else { 
+        // iterate over the object
+        for (let key in collection){
+            // pass the current item, its key, and the object itself to the input function
+            func(collection[key], key, collection);
+        }
+    }
+}
+
 
 
 /** _.unique
