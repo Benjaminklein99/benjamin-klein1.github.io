@@ -10,6 +10,7 @@
  * @param {Function} action: The Function to be applied to each value in the 
  * collection
  */
+
 function each(collection, action) {
     if(Array.isArray(collection)) {
         for(var i = 0; i < collection.length; i++) {
@@ -22,3 +23,17 @@ function each(collection, action) {
     }
 }
 module.exports.each = each;
+
+
+
+/**
+ * identity: Returns input value unchanged
+ * 
+ * @param { Any value }: Function takes in any value
+ * @param { Any value }: Function return input value unchanged
+ */
+
+function identity(value){
+    return value;
+}
+module.exports.identity = identity;
