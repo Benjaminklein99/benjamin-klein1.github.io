@@ -320,7 +320,17 @@ _.partition = function(arr, func){
 */
 
 _.map = function(collection, func){
-    
+    let result = []
+    if (Array.isArray(collection)){
+        for (let i = 0; i < collection.length; i++){
+            result.push(func(collection[i], i, collection))
+        }
+    } else {
+        for (let key in collection){
+            result.push(func(collection[key], key, collection));
+        }
+    }
+    return result;
 }
 
 /** _.pluck
@@ -333,6 +343,15 @@ _.map = function(collection, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+
+_.pluck = function(arr, prop){
+    let res = _.map(arr, function(current){
+        if (current.hasOwnProperty(prop)){
+            return current[prop];
+        }
+    })
+    return res;
+}
 
 
 /** _.every
@@ -427,6 +446,54 @@ _.every = function(collection, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func){
+    // determine if collection is array
+    if (Array.isArray(collection)){
+        // determine if no function was passed in
+        if (func === undefined){
+            // iterate over collection
+            for (let i = 0; i < collection.length; i++){
+                // determine if collection[i] is truthy
+                if (collection[i]){
+                    // return true
+                    return true;
+                }
+            }
+        // else it was
+        } else { 
+            for (let i = 0; i < collection.length; i++){
+                // determine if collection[i] is truthy
+                if (func(collection[i], i, collection)){
+                    // return true
+                    return true;
+                }
+            }
+        }
+    } else { // otherwise its an object
+        // determine if no function was passed in
+        if (func === undefined){
+            // iterate over collection
+            for (let key in collection){
+                // determine if collection[key] is truthy
+                if (collection[key]){
+                    // return true
+                    return true;
+                }
+            }
+        // else it was
+        } else { 
+            for (let key in collection){
+                // determine if collection[i] is truthy
+                if (func(collection[key], key, collection)){
+                    // return true
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 
 /** _.reduce
 * Arguments:
@@ -447,6 +514,24 @@ _.every = function(collection, func){
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+_.reduce = function(array, func, seed){
+    // if no seed is given
+    let result;
+    if (seed === undefined){
+        result = array[0];
+        for (let i = 1; i < array.length; i++){
+            result = func(result, array[i], i);
+        }
+    } else {
+        result = seed;
+        for (let i = 0; i < array.length; i++){
+            result = func(result, array[i], i);
+        }
+    }
+    return result;
+};
+
+
 
 /** _.extend
 * Arguments:
@@ -462,6 +547,11 @@ _.every = function(collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(...args){
+    return Object.assign(...args);
+}
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
