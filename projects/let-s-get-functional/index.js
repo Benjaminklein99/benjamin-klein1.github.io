@@ -3,7 +3,7 @@
 'use strict';
 
 var customers = require('./data/customers.json');
-var _ = require(/* Replace this with the name of your lodown! */);
+var _ = require('underbar');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -16,26 +16,81 @@ var _ = require(/* Replace this with the name of your lodown! */);
  *
  * 4. To test your work, run the following command in your terminal:
  *
- *    npm start --prefix ./<YOUR_GITHUB_FOLDER/projects/let-s-get-functional
+ *    npm start --prefix ./benjamin-klein1.github.io/projects/let-s-get-functional
  *
  *    IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
  */
 
 var maleCount = function(array) {
-
+    let males = _.filter(array, function(customer){
+        return customer.gender === 'male';
+    })
+    return males.length;
 };
 
-var femaleCount;
+var femaleCount = function(array){
+    let females = _.reduce(array, function(accumulator, current, index){
+        if (current.gender === 'female'){
+            accumulator += 1;
+        }
+        return accumulator;
+    }, 0)
+    return females;
+};
 
-var oldestCustomer;
+var oldestCustomer = function(array){
+    let old = _.reduce(array, function(acc, curr){
+        if (curr.age > acc.age){
+            acc = curr;
+        }
+        return acc;
+    })
+    return old.name;
+};
 
-var youngestCustomer;
+var youngestCustomer = function(array){
+    let young = _.reduce(array, function(acc, curr){
+        if (curr.age < acc.age){
+            acc = curr;
+        }
+        return acc;
+    })
+    return young.name;
+};;
 
-var averageBalance;
+var averageBalance = function(array){
+    let totalBal = _.reduce(array, function(acc, curr){
+        let clean = curr.balance.replace(/[$,]/g, '')
+        acc += Number(clean);
+        return acc;
+    }, 0)
+    let res = totalBal / array.length
+    return res;
+};
 
-var firstLetterCount;
+var firstLetterCount = function(array, char){
+    let count = _.reduce(array, function(acc, curr){
+        if (curr.name[0].toUpperCase() === char.toUpperCase()){
+            acc += 1;
+        }
+        return acc;
+    }, 0)
+    return count;
+};
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(arr, customer, char){
+    let count = 0; 
+    for (let i = 0; i < arr.length; i++){
+        if (arr[i].name === customer){
+            for (let x = 0; x < arr[i].friends.length; x++){
+                if (arr[i].friends[x].name[0] === char.toUpperCase()){
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+};
 
 var friendsCount;
 
