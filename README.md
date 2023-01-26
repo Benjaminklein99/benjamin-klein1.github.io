@@ -17,3 +17,5 @@
 1) In terminal, type => git add -A
 2) In terminal, type => git commit -m 'add a note'
 3) In terminal, type => git push
+
+## os submit

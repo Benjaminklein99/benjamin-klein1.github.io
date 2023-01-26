@@ -92,11 +92,52 @@ var friendFirstLetterCount = function(arr, customer, char){
     return count;
 };
 
-var friendsCount;
+var friendsCount = function(arr, name){
+    let res = [];
+    for (let i = 0; i < arr.length; i++){
+        for (let ii = 0; ii < arr[i].friends.length; ii++){
+            if (arr[i].friends[ii].name === name){
+                res.push(arr[i].name)
+            }
+        }
+    }
+    return res;
+};
 
-var topThreeTags;
+var topThreeTags = function(arr){
+    let tagsObj = {};
+    for (let i = 0; i < arr.length; i++){
+        for (let ii = 0; ii < arr[i].tags.length; ii++){
+            if (tagsObj.hasOwnProperty(arr[i].tags[ii])){
+                tagsObj[arr[i].tags[ii]] += 1;
+            } else {
+                tagsObj[arr[i].tags[ii]] = 1;
+            }
+        }
+    }
+    let res = [];
+    for (let key in tagsObj){
+        if (tagsObj[key] >= tagsObj[res[0]]){
+            res.unshift(key);
+        } else {
+            res.push(key);
+        }
+    }
+    return res.slice(0, 3);
 
-var genderCount;
+};
+
+var genderCount = function(arr){
+    let res = {};
+    for (let i = 0; i < arr.length; i++){
+        if (res.hasOwnProperty(arr[i].gender)){
+            res[arr[i].gender] += 1;
+        } else {
+            res[arr[i].gender] = 1;
+        }
+    }
+    return res;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
