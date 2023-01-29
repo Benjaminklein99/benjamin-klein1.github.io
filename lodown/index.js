@@ -29,7 +29,7 @@ module.exports.each = each;
 /**
  * identity: Takes in an input value and returns the value unchanged.
  * 
- * @param { Any value }: Function takes in any value and return input value unchanged
+ * @param { Any value } value: Function takes in any value and return input value unchanged
  */
 
 function identity(value){
@@ -43,7 +43,7 @@ module.exports.identity = identity;
 * typeOf: Takes in any value and test what data type the value is. Types are one of:
 * "string", "array", "object", "undefined", "number", "boolean", "null", or "function"
 *
-* @param { Any value} : Takes in any value and test what data type the value is
+* @param { Any value} val: Takes in any value and test what data type the value is
 */
 
 function typeOf(val){
@@ -66,8 +66,8 @@ module.exports.typeOf = typeOf;
 * If the input number is not an number, then the first item in the array will be returned.
 * If the input number is longer than the array, the entire array will be returned.
 * 
-*  @param { An array }: an array to take contents from.
-*  @param { A number }: a number to specifie how many item to take.
+*  @param { An array } arr: an array to take contents from.
+*  @param { A number } num: a number to specifie how many item to take.
 * 
 */
 
@@ -90,8 +90,8 @@ module.exports.first = first;
 * If the input number is not an number, then the last item in the array will be returned.
 * If the input number is longer than the array, the entire array will be returned.
 *
-*  @param { An array }: an array to take contents from.
-*  @param { A number }: a number to specifie how many item to take.
+*  @param { An array } arr: an array to take contents from.
+*  @param { A number } num: a number to specifie how many item to take.
 *
 */
 
@@ -114,8 +114,8 @@ module.exports.last = last;
 * indexOf: Returns the index of the input array that is the first occurrance of value. Function will 
 * return -1 if the given value is not in the input array.
 *
-*  @param { An array }: an array to iterate over.
-*  @param { A value }: a value to test against.
+*  @param { An array } arr: an array to iterate over.
+*  @param { A value } num: a value to test against.
 */
 
 function indexOf(arr, val){
@@ -135,8 +135,8 @@ module.exports.indexOf = indexOf;
 * contains: Function test if a given value is in an array. Returns true if the input array contains the input value.
 * Otherwise it will return false.
 * 
-*  @param { An array }: an array to iterate over.
-*  @param { A value }: a value to test against.
+*  @param { An array } arr: an array to iterate over.
+*  @param { A value } val: a value to test against.
 *
 */
 
@@ -155,7 +155,7 @@ module.exports.contains = contains;
 /** 
 * unique: takes an input array and returns a new array with duplicates removed
 * 
-*  @param { An array }: an array to iterate over
+*  @param { An array } arr: an array to iterate over
 *
 */
 
@@ -175,8 +175,8 @@ module.exports.unique = unique;
 * call function on each element in array on the current element, it's index, and the array itself.
 * Will then return a new array of elements for which callback function returned true.
 * 
-*  @param { An array }: an array to iterate over
-*  @param { A function }: A function to test the current item, its index, and the array itself
+*  @param { An array } arr: an array to iterate over.
+*  @param { A function } func: A function to test the current item, its index, and the array itself.
 * 
 */
 
@@ -191,20 +191,17 @@ function filter(arr, func){
 }
 module.exports.filter = filter;
 
-/** _.reject
-* Arguments:
-*   1) An array
-*   2) A function
-* Objectives:
-*   1) call <function> for each element in <array> passing the arguments:
-*      the element, it's index, <array>
-*   2) return a new array of elements for which calling <function> returned false
-*   3) This is the logical inverse if _.filter()
-* Examples:
-*   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
+/** 
+* reject: Takes an input array and a callback function. Will iterate over the input array and 
+* call function on each element in array on the current element, it's index, and the array itself.
+* Will then return a new array of elements for which the callback function returned false.
+* 
+*  @param { An array } arr: an array to iterate over.
+*  @param { A function } func: A function to test the current item, its index, and the array itself.
+* 
 */
 
-_.reject = function(arr, func){
+function reject(arr, func){
     let result = [];
     for (let i = 0; i < arr.length; i++){
         if (!func(arr[i], i, arr)){
@@ -213,27 +210,24 @@ _.reject = function(arr, func){
     }
     return result;
 }
+module.exports.reject = reject;
 
-/** _.partition
-* Arguments:
-*   1) An array
-*   2) A function
-* Objectives:
-*   1) Call <function> for each element in <array> passing it the arguments:
-*       element, key, <array>
-*   2) Return an array that is made up of 2 sub arrays:
-*       0) An array that contains all the values for which <function> returned something truthy
-*       1) An array that contains all the values for which <function> returned something falsy
-* Edge Cases:
-*   1) This is going to return an array of arrays.
-* Examples:
-*   _.partition([1,2,3,4,5], function(element,index,arr){
-*     return element % 2 === 0;
-*   }); -> [[2,4],[1,3,5]]
-}
+
+
+
+/** 
+* partition: 
+Takes an input array and a callback function. Will iterate over the input array and 
+* call function on each element in array on the current element, it's index, and the array itself.
+* Will then return an array of two arrays, one of elements for which the callback function returned false,
+* and the other for which which the callback function returned true.
+* 
+*  @param { An array } arr: an array to iterate over.
+*  @param { A function } func: A function to test the current item, its index, and the array itself.
+* 
 */
 
-_.partition = function(arr, func){
+function partition(arr, func){
     let t = [];
     let f = []
     for (let i = 0; i < arr.length; i++){
@@ -245,24 +239,23 @@ _.partition = function(arr, func){
     }
     return Array(t, f);
 }
+module.exports.partition = partition;
 
-/** _.map
-* Arguments:
-*   1) A collection
-*   2) a function
-* Objectives:
-*   1) call <function> for each element in <collection> passing the arguments:
-*        if <collection> is an array:
-*            the element, it's index, <collection>
-*        if <collection> is an object:
-*            the value, it's key, <collection>
-*   2) save the return value of each <function> call in a new array
-*   3) return the new array
-* Examples:
-*   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
+
+
+
+/** 
+* map: takes a collection and a function. Will call function for each element in <collection> passing the arguments:
+* the current element, it's index, the array itself if the input collection is an array, and the current value, it's key, 
+* and the object itself if the input collection is an object. Each return value will then be saved in a new array. Lastly
+* the new array is returned
+* 
+*  @param { an array or an object } collection: a collection to iterate over.
+*  @param { a function } func: a fonction to be applied.
+*
 */
 
-_.map = function(collection, func){
+function map(collection, func){
     let result = []
     if (Array.isArray(collection)){
         for (let i = 0; i < collection.length; i++){
@@ -275,19 +268,21 @@ _.map = function(collection, func){
     }
     return result;
 }
+module.exports.map = map;
 
-/** _.pluck
-* Arguments:
-*   1) An array of objects
-*   2) A property
-* Objectives:
-*   1) Return an array containing the value of <property> for every element in <array>
-*   2) You must use _.map() in your implementation.
-* Examples:
-*   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
+
+
+
+/** 
+* pluck: Takes an array of objects and a property to test for. Will return an array containing 
+the value of property for every element in array.
+*
+*  @param { an array } arr: an array of objects to iterate over
+*  @param { a property } prop: a property to find the value for
+*  
 */
 
-_.pluck = function(arr, prop){
+function pluck(arr, prop){
     let res = _.map(arr, function(current){
         if (current.hasOwnProperty(prop)){
             return current[prop];
@@ -295,6 +290,10 @@ _.pluck = function(arr, prop){
     })
     return res;
 }
+module.exports.pluck = pluck;
+
+
+
 
 
 /** _.every
