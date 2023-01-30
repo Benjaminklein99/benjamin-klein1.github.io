@@ -29,7 +29,9 @@ module.exports.each = each;
 /**
  * identity: Takes in an input value and returns the value unchanged.
  * 
- * @param { Any value } value: Function takes in any value and return input value unchanged
+ *  @param { Any value } value: Function takes in any value.
+ * 
+ *  @return { Input value }: Function returns input value unchanged.
  */
 
 function identity(value){
@@ -43,7 +45,9 @@ module.exports.identity = identity;
 * typeOf: Takes in any value and test what data type the value is. Types are one of:
 * "string", "array", "object", "undefined", "number", "boolean", "null", or "function"
 *
-* @param { Any value} val: Takes in any value and test what data type the value is
+*  @param { Any value} val: Takes in any value and test what data type the value is.
+*
+*  @return { a string }: will return string of what the input vlaue is.
 */
 
 function typeOf(val){
@@ -69,6 +73,9 @@ module.exports.typeOf = typeOf;
 *  @param { An array } arr: an array to take contents from.
 *  @param { A number } num: a number to specifie how many item to take.
 * 
+*  @return { an array or an item in the array }: * If input is not an array, or the entered number is negative, an array 
+* litteral will be returned. If the input number is not an number, then the first item in the array 
+* will be returned. If the input number is longer than the array, the entire array will be returned.
 */
 
 function first(arr, num){
@@ -93,6 +100,9 @@ module.exports.first = first;
 *  @param { An array } arr: an array to take contents from.
 *  @param { A number } num: a number to specifie how many item to take.
 *
+*  @return { an array or an item in the array }: * If input is not an array, or the entered number is negative, an array 
+* litteral will be returned. If the input number is not an number, then the last item in the array 
+* will be returned. If the input number is longer than the array, the entire array will be returned.
 */
 
 function last(arr, num){
@@ -116,6 +126,9 @@ module.exports.last = last;
 *
 *  @param { An array } arr: an array to iterate over.
 *  @param { A value } num: a value to test against.
+*
+*  @return { A number }: Will return the index of the array that the value was first found at. If
+* value is not in the array, -1 will be returned.
 */
 
 function indexOf(arr, val){
@@ -138,6 +151,7 @@ module.exports.indexOf = indexOf;
 *  @param { An array } arr: an array to iterate over.
 *  @param { A value } val: a value to test against.
 *
+*  @return { A boolean }: Returns true if the input array contains the input value, otherwise it will return false.
 */
 
 function contains(arr, val){
@@ -157,6 +171,7 @@ module.exports.contains = contains;
 * 
 *  @param { An array } arr: an array to iterate over
 *
+*  @return { An array }: returns a new array with duplicates removed
 */
 
 function unique(arr){
@@ -178,6 +193,7 @@ module.exports.unique = unique;
 *  @param { An array } arr: an array to iterate over.
 *  @param { A function } func: A function to test the current item, its index, and the array itself.
 * 
+*  @return { An array }: Will return a new array of elements for which the callback function returned true.
 */
 
 function filter(arr, func){
@@ -199,6 +215,7 @@ module.exports.filter = filter;
 *  @param { An array } arr: an array to iterate over.
 *  @param { A function } func: A function to test the current item, its index, and the array itself.
 * 
+*  @return { An array }: Will return a new array of elements for which the callback function returned false.
 */
 
 function reject(arr, func){
@@ -216,8 +233,7 @@ module.exports.reject = reject;
 
 
 /** 
-* partition: 
-Takes an input array and a callback function. Will iterate over the input array and 
+* partition: Takes an input array and a callback function. Will iterate over the input array and 
 * call function on each element in array on the current element, it's index, and the array itself.
 * Will then return an array of two arrays, one of elements for which the callback function returned false,
 * and the other for which which the callback function returned true.
@@ -225,6 +241,8 @@ Takes an input array and a callback function. Will iterate over the input array 
 *  @param { An array } arr: an array to iterate over.
 *  @param { A function } func: A function to test the current item, its index, and the array itself.
 * 
+*  @return { an array}: Will return an array of two arrays, one of elements for which the callback function returned false,
+* and the other for which which the callback function returned true.
 */
 
 function partition(arr, func){
@@ -248,11 +266,12 @@ module.exports.partition = partition;
 * map: takes a collection and a function. Will call function for each element in <collection> passing the arguments:
 * the current element, it's index, the array itself if the input collection is an array, and the current value, it's key, 
 * and the object itself if the input collection is an object. Each return value will then be saved in a new array. Lastly
-* the new array is returned
+* the new array is returned.
 * 
 *  @param { an array or an object } collection: a collection to iterate over.
-*  @param { a function } func: a fonction to be applied.
+*  @param { a function } func: a function to be applied.
 *
+*  @return { an array }: returns an array containing each result from the invokation of the callback function
 */
 
 function map(collection, func){
@@ -280,6 +299,7 @@ the value of property for every element in array.
 *  @param { an array } arr: an array of objects to iterate over
 *  @param { a property } prop: a property to find the value for
 *  
+*  @return { an array }: Will return an array containing the value of property for every element in array.
 */
 
 function pluck(arr, prop){
@@ -296,28 +316,20 @@ module.exports.pluck = pluck;
 
 
 
-/** _.every
-* Arguments:
-*   1) A collection
-*   2) A function
-* Objectives:
-*   1) Call <function> for every element of <collection> with the paramaters:
-*      if <collection> is an array:
-*          current element, it's index, <collection>
-*      if <collection> is an object:
-*          current value, current key, <collection>
-*   2) If the return value of calling <function> for every element is true, return true
-*   3) If even one of them returns false, return false
-*   4) If <function> is not provided, return true if every element is truthy, otherwise return false
-* Edge Cases:
-*   1) what if <function> doesn't return a boolean
-*   2) What if <function> is not given?
-* Examples:
-*   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
-*   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
+/** 
+* every: Takes a collection and a function. Will call function for each element in <collection> passing the arguments:
+* the current element, it's index, the array itself if the input collection is an array, and the current value, it's key, 
+* and the object itself if the input collection is an object. If the return value of calling the input function for every 
+* element is true, true will be returned. If one of them returns false, false will be returned. If a function is not 
+* provided, return true if every element is truthy, otherwise return false.
+* 
+*  @param { an array or an object } collection: a collection to iterate over.
+*  @param { a function } func: a function to be applied.
+*
+*  @return { boolean }: returns true if all items are truthy or if the return true from callback function.
 */
 
-_.every = function(collection, func){
+function every(collection, func){
     // determine if collection is array
     if (Array.isArray(collection)){
         // determine if no function was passed in
@@ -364,31 +376,26 @@ _.every = function(collection, func){
     }
     return true;
 }
+module.exports.every = every;
 
 
 
-/** _.some
-* Arguments:
-*   1) A collection
-*   2) A function
-* Objectives:
-*   1) Call <function> for every element of <collection> with the paramaters:
-*       if <collection> is an array:
-*        current element, it's index, <collection>
-*       if <collection> is an object:
-*        current value, current key, <collection>
-*   2) If the return value of calling <function> is true for at least one element, return true
-*   3) If it is false for all elements, return false
-*   4) If <function> is not provided return true if at least one element is truthy, otherwise return false
-* Edge Cases:
-*   1) what if <function> doesn't return a boolean
-*   2) What if <function> is not given?
-* Examples:
-*   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
-*   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
+
+
+/** 
+* some: Takes a collection and a function. Will call function for each element in <collection> passing the arguments:
+* the current element, it's index, the array itself if the input collection is an array, and the current value, it's key, 
+* and the object itself if the input collection is an object. If the return value of calling the input function is true for
+* any of the results of the callback, true will be returned. If a function is not provided, return true if any element is 
+* truthy, otherwise return false.
+* 
+*  @param { an array or an object } collection: a collection to iterate over.
+*  @param { a function } func: a function to be applied.
+*
+*  @return { boolean }: returns true if any item is truthy or if any item returns true from callback function.
 */
 
-_.some = function(collection, func){
+function some(collection, func){
     // determine if collection is array
     if (Array.isArray(collection)){
         // determine if no function was passed in
@@ -435,28 +442,25 @@ _.some = function(collection, func){
     }
     return false;
 }
+module.exports.some = some;
 
 
-/** _.reduce
-* Arguments:
-*   1) An array
-*   2) A function
-*   3) A seed
-* Objectives:
-*   1) Call <function> for every element in <collection> passing the arguments:
-*         previous result, element, index
-*   2) Use the return value of <function> as the "previous result"
-*      for the next iteration
-*   3) On the very first iteration, use <seed> as the "previous result"
-*   4) If no <seed> was given, use the first element/value of <collection> as <seed> and continue to the next element
-*   5) After the last iteration, return the return value of the final <function> call
-* Edge Cases:
-*   1) What if <seed> is not given?
-* Examples:
-*   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
+
+/** 
+* reduce: takes an array, a function and a seed. Reduce will call the input function for every element in the inpur array
+* passing the arguments: the previous result, the current element, and the current elements index. It will use the return 
+* value of the input function as the "previous result" for the next iteration. On the very first iteration, seed will be
+* used as the "previous result". If no seed value was given, the first element of the array will be used as seed value.
+* After the last iteration, some will return the return value of the final function call.
+* 
+*  @param { An array } array: an array to over and test
+*  @param { A function } func: a function to be called on the privious item, the current item and its index
+*  @param { A seed } seed: what we want our return value to be
+*
+*  @return { A value }: return value is dependant of the input seed
 */
 
-_.reduce = function(array, func, seed){
+function reduce(array, func, seed){
     // if no seed is given
     let result;
     if (seed === undefined){
@@ -472,24 +476,19 @@ _.reduce = function(array, func, seed){
     }
     return result;
 };
+module.exports.reduce = reduce;
 
 
-
-/** _.extend
-* Arguments:
-*   1) An Object
-*   2) An Object
-*   ...Possibly more objects
-* Objectives:
-*   1) Copy properties from <object 2> to <object 1>
-*   2) If more objects are passed in, copy their properties to <object 1> as well, in the order they are passed in.
-*   3) Return the update <object 1>
-* Examples:
-*   var data = {a:"one"};
-*   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
-*   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
+/** 
+* extend: Takes in two or more object and copies the properties of each object into the first object
+*
+*  @param { An object }: an object to add to
+*  @param { An object }: an object to copy from
+*  @param { An object }: possibly more object to copy from
+*  
+*  @return { An object}: the first object with all the properties from the following objects coppied into it.
 */
 
-_.extend = function(...args){
+function extend(...args){
     return Object.assign(...args);
 }
