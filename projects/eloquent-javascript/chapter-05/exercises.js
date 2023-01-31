@@ -42,8 +42,20 @@ function every(arr, test) {
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-
+function dominantDirection(str) {
+  let ltr = [];
+  let rtl = [];
+  for (let i = 0; i < str.length; i++){
+    let script = characterScript(str.charCodeAt(i));
+    if (script !== null){
+      script.direction === 'ltr' ? ltr.push(script) : rtl.push(script);
+    }
+  }
+  if (ltr.length > rtl.length){
+    return 'ltr';
+  } else {
+    return 'rtl';
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
