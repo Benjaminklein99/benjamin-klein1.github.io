@@ -102,11 +102,7 @@ var contestants = function(array){
 
 
 // 3.
-var filterSpecies = dogs.filter(dog => {
-    if (dog.species === 'dog'){
-        return dog;
-    }
-});
+var filterSpecies = dogs.filter(dog => dog.species === 'dog');
 
 
 
