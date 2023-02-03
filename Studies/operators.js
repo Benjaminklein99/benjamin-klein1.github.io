@@ -43,6 +43,7 @@ num1 += num2;
 console.log(num1); // also logs ==> 30
 
 
+
 // 3. Comparison Operators //
 // There are two types of Comparison Operators, strict and loose. Strict comparison takes into account the data type that is being compared,
 // where as the loose comparison operator does not. Strict and Loose can be denoted by how many equal signs are in use, two for loose and three for strict
@@ -50,8 +51,22 @@ console.log( 1 === 1); // logs ==> true
 console.log( 1 === '1'); // logs ==> false
 console.log( 1 == '1'); // logs ==> true
 
-// we can flip the logic by using a bang operator (!)
-console.log( 1 !== 1) // logs ==> false
+// we can also compare greater than, less than, greaterthan or equal to, and less than or equal to
+console.log(1 > 2) // logs ==> false
+console.log(1 < 2) // logs ==> true
+console.log(2 >= 1) // logs ==> true
+console.log(2 >= 2) // logs ==> true
+
 
 
 //4. Logical Operators //
+// There are three types of Logical Operators. They are and (&&), or (||), and not (!). The first, and, is used to compare if both of two statements
+// resolve to true. The or operator is used to evaluate if either of the two statement resolve to true. Finally, the not operator is use to flip the
+// logic of the statement it was used in.  If the statement will resolve to false, it will flip that false into a true and vice versa.
+console.log(1 < 2 && 2 < 3) // logs ==> true
+console.log(1 < 2 && 2 > 3) // logs ==> false
+console.log(1 < 2 || 2 < 3) // logs ==> true
+console.log(1 < 2 || 2 > 3) // logs ==> true
+console.log(1 > 2 || 2 > 3) // logs ==> false
+console.log(1 !== 1) // logs ==> false
+console.log(1 !== 2) // logs ==> true
