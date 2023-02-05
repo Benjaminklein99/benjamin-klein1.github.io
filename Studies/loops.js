@@ -32,16 +32,20 @@
 // For Loop //
 var array = [1, 2, 3, 4, 5];
 
+// start at 0 index, keep going unless index is equal to array length, increment by 1
 for (let i = 0; i < array.length; i++){
-    console.log(array[i]);
+    console.log(array[i]); // logs ==> 1 2 3 4 5
 }
 
+// start at last index in array, keep going until index is 0, decrement index by 1
 for (let i = array.length - 1; i >= 0; i--){
-    console.log(array[i]);
+    console.log(array[i]); // logs ==> 5 4 3 2 1
 }
 
+// start at the first index, continue till the second to last item in array, increment index by 1
 for (let i = 1; i < array.length - 1; i++){
-    console.log(array[i]);
+  // log the item at the current index
+    console.log(array[i]); // logs ==> 2 3 4
 }
 
 
@@ -49,21 +53,33 @@ for (let i = 1; i < array.length - 1; i++){
 // While Loop //
 var array2 = ['a', 'b', 'c', 'd', 'e'];
 
+// start at the beginning of array2
 var index = 0;
+// keep going while index is less than the length of array2
 while (index < array2.length){
-  console.log(array2[index]);
+  // log the item at teh current index
+  console.log(array2[index]); // logs ==> a b c d e
+  // increment index by 1
   index++;  
 }
 
+// start at the last item in array2
 var index2 = array2.length - 1;
+// keep going while index2 is greater than or equal to 0
 while (index2 >= 0){
-  console.log(array2[index2]);
+  // each time, console log the item at the index
+  console.log(array2[index2]); // logs ==> e d c b a 
+  // decrement index2 by one
   index2--;
 }
 
+// start at the second item in array2
 var index3 = 1;
+// keep going until the second to last item
 while (index3 < array2.length - 1){
-  console.log(array2[index3]);
+  // each time log the item at the current index
+  console.log(array2[index3]); // logs ==> b c d
+  // increment index by one
   index3++;
 }
 
@@ -71,10 +87,14 @@ while (index3 < array2.length - 1){
 // For In Loop//
 var object = {a: 1, b: 2, c: 3, d: 4, e: 5}
 
+// for each key in object
 for (let key in object){
-    console.log(key);
+  // log the key name
+  console.log(key); // logs ==> a b c d e
 }
 
+// for each key in object
 for (let key in object){
-    console.log(object[key]);
+  // log the value of each key
+  console.log(object[key]); // logs 1 2 3 4 5
 }
