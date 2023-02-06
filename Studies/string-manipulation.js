@@ -23,10 +23,10 @@
  // 2. Methods //
  // The syntax for string methods is the nave of the variable that you would like to manpulate, a dot, the mothod, and parantheses
  // some methods can be simply invoked without passing anything to their paranthese.
- var word3 = 'All caps'
- console.log(word3.toUpperCase()) // logs ==> 'ALL CAPS'
+ var word3 = 'All caps';
+ console.log(word3.toUpperCase()); // logs ==> 'ALL CAPS'
  
 
  // methods such as slice will need further information passed into their parantheses, in this case to denote where to 'cut' our string apart.
- var word4 = 'slice'
- console.log(word4.slice(1)) // logs ==> 'lice'
+ var word4 = 'slice';
+ console.log(word4.slice(1)); // logs ==> 'lice'
