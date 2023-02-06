@@ -1,10 +1,10 @@
 /**
  * 0. Data Types:
  * In Javscript, data type is an attribute associated with a piece of data that tells a computer system how to interpret its value.
- * 
- * 
- * 
- * 
+ * All datatypes can fit into two categories: simple/primitive or complex.  A primitive is data that is not an object and has no 
+ * methods or properties. Complex datatypes are just the oposite. This difference is important to remember because simple data types
+ * are passed to a function by copy, while complex data types are passed by reference. This means that a simple data type will not
+ * be mutated while a complex datatype will.
  */
 
 // 1. Number //
