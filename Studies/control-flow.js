@@ -17,14 +17,18 @@
  * 3. Else also cannot stand alone. It must follow an if statement or an if else if chain. Else does not have a conditional
  * statement. If all proceeding conditional statements resolve to false, the esle statements code block will run.
  * 
- * 4. Switch Statements
+ * 4. Switch Statements are similar to if else chains in that they will only run a block of code if a condition is met, but the
+ * way that the conditions are defined is quite different.  Switch statements use cases that will only run their code block if
+ * the input expression matches its case. Each case is followed by the keyword break, denoting the end of the code intended for
+ * that case. If none of the cases are met, we can use the keyword default, to create a block of code that only runs if no case is
+ * met.
  */
 
 
 // 1. If //
-var value1 = 'Ben'
-var value2 = 'Ben'
-var value3 = 'Benjamin'
+var value1 = 'Ben';
+var value2 = 'Ben';
+var value3 = 'Benjamin';
 
 // resolves to true
 if (value1 === value2){
@@ -39,8 +43,8 @@ if (value1 === value3){
 
 
 // 2. Else If //
-var value1 = 'Ben'
-var value2 = 'Ned'
+var value1 = 'Ben';
+var value2 = 'Ned';
 
 // resolves to false
 if (value1 === value2){
@@ -53,8 +57,8 @@ if (value1 === value2){
 
 
 // 3. Else //
-var value1 = 'Benjamin'
-var value2 = 'Ned'
+var value1 = 'Benjamin';
+var value2 = 'Ned';
 
 // resolves to false
 if (value1 === value2){
@@ -66,3 +70,51 @@ if (value1 === value2){
     console.log('false'); // logs ==> false
 }
 
+
+
+
+// 4. Switch //
+var time = 'night';
+switch (time){
+  case 'morning': // case doesnt match
+    console.log('Good morning'); // code isnt run
+    break;
+  case 'evening': // case doesnt match
+    console.log('Good evening'); // code isnt run
+    break;
+  case 'night': // case matches
+    console.log('Good night'); // logs ==> good night
+    break;
+  default: // default doesnt get hit
+    console.log('time not recognized'); // code isnt run
+}
+
+time = 'morning';
+switch (time){
+  case 'morning': // case matches
+    console.log('Good morning'); // logs ==> Good morning
+    break;
+  case 'evening': // code beyond here doesnt get hit
+    console.log('Good evening');
+    break;
+  case 'night': 
+    console.log('Good night');
+    break;
+  default: 
+    console.log('time not recognized');
+}
+
+time = 'sun down';
+switch (time){
+  case 'morning': // case doesnt match
+    console.log('Good morning'); // code isnt run
+    break;
+  case 'evening': // case doesnt match
+    console.log('Good evening'); // code isnt run
+    break;
+  case 'night': // case doesnt match
+    console.log('Good night'); // code isnt run
+    break;
+  default: // default gets hit
+    console.log('time not recognized'); // logs ==> time not recognized
+}
