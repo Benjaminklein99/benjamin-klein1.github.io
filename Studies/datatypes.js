@@ -71,3 +71,29 @@ console.log(2 * a) // logs ==> NaN
 // other number. Likewise, negative infinity is less than any other number.
 console.log(100000000000 < Infinity); // logs ==> true
 console.log(-100000000 > -Infinity); // logs ==> true
+
+// 11. Copy By value //
+// Because the variable y takes a copy of the value from x, the values of x and y are independent of one another. This means
+// that when x is redefined, the y variable remains the same because it is not referencing the value from x.
+let x = 10;
+let y = x;
+x = 20;
+console.log(x); // logs ==> 20
+console.log(y); // logs ==> 10
+
+// this behavior also works with strings, booleans, undefined an null
+let a = 'string';
+let b = a;
+a = 'another string';
+console.log(a); // logs ==> another string
+console.log(b); // logs ==> string
+
+// 12. Copy By Reference //
+// When using the data types: arrays, objects and functions, the variables are NOT independent on one another meaning 
+// that changes you make to one variable will be implemented to its reference.
+let num = 10;
+function increase(number){
+    return number += 1;
+}
+console.log(increase(num)); // logs ==> 11
+console.log(num); // logs ==> 10. the num variable remains unaffected by the function increase.
