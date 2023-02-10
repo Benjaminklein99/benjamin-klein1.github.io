@@ -36,6 +36,8 @@
     var myVariable = 'variable';
     console.log(myVariable); // prints ==> 'variable'
 
+    let example = 'string';
+
     const myName2 = 'Klein';
     console.log(myName2); //  prints ==> 'Klein'
 
@@ -48,6 +50,11 @@
     myName = 'Jeff';
     console.log(myName); // prints ==> 'Jeff'
 
+    example = 'new value';
+    console.log(example); // logs ==> new value
+
+    myName2 = 'Something else';
+    console.log(myName2) // error assignment to const variable
 
 
 
@@ -69,3 +76,21 @@
     function foobar(){ 
         var a = 'example';
     }
+
+// 5. Block Scopes //
+// The let and const keyword can create what's called block scoped code.  While the var keyword creates a globally accessable
+// variable, variables created with the let or const keywords, can only be accessed within their code block.
+if (1 === 1){
+    var example1 = '1';
+  }
+  console.log(example1); // logs ==> 1
+  
+  if (1 === 1){
+    let example2 = '2';
+  }
+  console.log(example2); // logs ReferenceError example2 is not defined
+  
+  if (1 === 1){
+    const example3 = '3';
+  }
+  console.log(example3); // logs ReferenceError example3 is not defined
