@@ -33,6 +33,7 @@ console.log(10++); // increment by 1: logs ==> 11
 console.log(10--); // decrement by 1: logs ==> 9
 
 // we can also combine an Aritmetic Operator with an Assignment operator to assign variable to the result of the operation all at once
+// for these examples, imagine that the value resets to its original value before the next example
 var num1 = 10;
 var num2 = 20;
 // instead of this
@@ -41,6 +42,15 @@ console.log(num1); // logs ==> 30
 // we can do this
 num1 += num2;
 console.log(num1); // also logs ==> 30
+
+num2 -= num1;
+console.log(num2); // logs ==> 10
+
+num1 *= num2;
+console.log(num1); // logs ==> 200
+
+num2 /= num1;
+console.log(num2); // logs ==> 2
 
 
 
