@@ -30,3 +30,9 @@
  // methods such as slice will need further information passed into their parantheses, in this case to denote where to 'cut' our string apart.
  var word4 = 'slice';
  console.log(word4.slice(1)); // logs ==> 'lice'
+
+ // The replace method takes two inputs into its parens.  The first imput is the target you would like to replace, and the second is
+ // what we would like to replace our target with
+ var name = 'My name is Jeff';
+ var replaced = name.replace('Jeff', 'Ben');
+ console.log(replaced);
